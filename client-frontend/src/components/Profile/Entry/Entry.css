@@ -1,0 +1,11 @@
+.entry {
+    display: flex;
+    flex-direction: column;
+    background-color: grey;
+    width: 50%;
+    margin: 15px;
+}
+
+.entry > div {
+    margin: 5px;
+}

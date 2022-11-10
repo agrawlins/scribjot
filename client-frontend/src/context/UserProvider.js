@@ -15,9 +15,12 @@ const UserProvider = (props) => {
         user: JSON.parse(localStorage.getItem("user")) || {}, 
         token: localStorage.getItem("token") || "", 
         entries: [],
+        prompts: [],
         errMsg: ""
     }
     const [userState, setUserState] = useState(initState)
+    const [prompt, setPrompt] = useState(initState)
+
     const signup = (credentials) => {
         axios.post("/auth/signup", credentials)
         .then(res => {
@@ -95,6 +98,21 @@ const UserProvider = (props) => {
             .catch(err => console.log(err.response.data.errMsg))
     }
 
+    const getPrompts = () => {
+        userAxios.get("/api/prompts")
+          .then(res => {
+            setUserState(prevState => ({
+                ...prevState,
+                prompts: res.data
+            }))
+        })
+        .catch(err => console.log(err.response.data.errMsg))
+      }
+
+    const selectRandomPrompt = () => {
+
+    }
+
     return (
         <UserContext.Provider
             value={{
@@ -104,6 +122,8 @@ const UserProvider = (props) => {
                 logout,
                 addEntry,
                 getUserEntries,
+                getPrompts,
+                selectRandomPrompt,
                 resetAuthErr  
             }}>
             {props.children}

@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar.js'
+import Footer from './components/Footer/Footer.js'
 import Auth from './components/Login/Auth/Auth.js'
 import Profile from './components/Profile/Profile.js'
 import ProtectedRoute from './components/ProtectedRoute.js'
@@ -30,6 +31,7 @@ const App = () => {
           </ProtectedRoute>}
         />
       </Routes>
+      <Footer />
     </div>
   )
 }

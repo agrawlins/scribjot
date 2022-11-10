@@ -1,4 +1,5 @@
 import React from 'react'
+import './AuthForm.css'
 
 const AuthForm = (props) => {
   const {
@@ -13,7 +14,7 @@ const AuthForm = (props) => {
   } = props
   
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='auth-form' onSubmit={handleSubmit}>
       <input 
         type="text" 
         value={username} 

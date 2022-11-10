@@ -2,27 +2,47 @@
     height: 100vh;
 }
 
-.newEntry > form {
+.newEntry > div {
     height: 90vh;
     display: flex;
     flex-direction: column;
-    margin: 20px;
+    margin: 2%;
     border: 1px solid #3339;
     background-color: #aaa9;
-    padding: 20px;
+    padding: 2%;
     border-radius: 15px;
 }
 
-.newEntry > form > textarea {
-    height: 70vh;
+.newEntry > div > h1  {
+    margin: 3%;
+}
+  
+
+.newEntry > div > button  {
+    margin: 1% 3%;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.newEntry > div > form {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0 1%;
+    padding: 2%;
+    border-radius: 15px;
+}
+
+.newEntry > div > form > textarea {
+    height: 60vh;
     resize: none;
-    margin: 8px 0;
+    margin: 1% 0;
     padding: 8px;
     border-radius: 10px;
 }
 
-.newEntry > form > button  {
-    margin: 8px 0;
+.newEntry > div > form > button  {
+    margin: 1% 0;
     padding: 8px;
     border-radius: 5px;
 }

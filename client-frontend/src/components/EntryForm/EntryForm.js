@@ -1,20 +1,34 @@
 import React, { useEffect, useContext, useState } from 'react'
 import { UserContext } from '../../context/UserProvider'
-import axios from 'axios'
+import PromptList from './PromptList/PromptList'
 import "./EntryForm.css"
+import { useNavigate } from 'react-router-dom'
 
 const initInputs = {
-  text: ""
+  text: []
 }
+
 
 const EntryForm = (props) => {
   const [inputs, setInputs] = useState(initInputs)
-  const [prompt, setPrompt] = useState(initInputs)
-  const {addEntry} = props
+  const [togglePrompts, setTogglePrompts] = useState(false)
+  const {addEntry, errMsg} = props
+  const {
+    user: {
+      username
+    }, 
+    getPrompts,
+    selectRandomPrompt,
+    prompts,
+    prompt
+  } = useContext(UserContext)
 
-  // useEffect(() => {
-  //   selectRandom()
-  // }, [])
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    getPrompts()
+    // selectRandomPrompt()
+  }, [])
 
   const handleChange = (e) => {
     const {name, value} = e.target
@@ -28,33 +42,38 @@ const EntryForm = (props) => {
     e.preventDefault()
     addEntry(inputs)
     setInputs(initInputs)
+    navigate('../profile')
   }
 
   const { text } = inputs
   return (
-    <form onSubmit={handleSubmit}>
-
-      <button>Get New Prompt</button>
-      <textarea 
-        type="textarea" 
-        name="text" 
-        value={text} 
-        onChange={handleChange} 
-        placeholder="Text"/>
-      {/* <input 
-        type="text" 
-        name="description" 
-        value={description} 
-        onChange={handleChange} 
-        placeholder="Description"/>
-      <input 
-        type="text" 
-        name="imgUrl" 
-        value={imgUrl} 
-        onChange={handleChange} 
-        placeholder="Image Url"/> */}
-      <button>New Entry</button>
-    </form>
+    <div>
+   
+      { !togglePrompts ?
+        <>
+          <button onClick={() => setTogglePrompts(!togglePrompts)}>Need Inspiration?</button>
+        </>
+        :
+        <>
+          <h1>Thoughts for Today's Entry:</h1> 
+          <h2> <PromptList prompts={prompts}/></h2>
+          <button onClick={() => setTogglePrompts(!togglePrompts)}>Feeling Inspired?</button>
+        </>
+      }
+      {/* <button onClick={() => selectRandomPrompt}>Get New Prompt</button> */}
+      <form onSubmit={handleSubmit}>
+        <textarea 
+          type="textarea" 
+          name="text" 
+          value={text} 
+          onChange={handleChange} 
+          placeholder="Text"
+          required
+        />
+        <p style={{color: "red"}}>{errMsg}</p>
+        <button>New Entry</button>
+      </form>
+    </div>
   )
 }
 
