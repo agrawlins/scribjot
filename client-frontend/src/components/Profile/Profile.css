@@ -1,0 +1,17 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.profile > h1 {
+    margin: 8px;
+    font-size: 2em;
+    text-align: center;
+}
+
+.profile > h3 {
+    margin: 16px 0;
+    text-decoration: underline;
+}

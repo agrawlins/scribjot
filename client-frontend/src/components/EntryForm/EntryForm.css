@@ -1,0 +1,28 @@
+.newEntry {
+    height: 100vh;
+}
+
+.newEntry > form {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    border: 1px solid #3339;
+    background-color: #aaa9;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.newEntry > form > textarea {
+    height: 70vh;
+    resize: none;
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.newEntry > form > button  {
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 5px;
+}
