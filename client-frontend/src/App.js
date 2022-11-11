@@ -16,7 +16,7 @@ const App = () => {
       <Routes>
         <Route 
           path="/" 
-          element={token ? <Navigate to="/profile"/> : <Auth />}
+          element={token ? <Navigate to="/newentry"/> : <Auth />}
         />
         <Route 
           path="/profile"

@@ -19,7 +19,6 @@ const Profile = () => {
   return (
     <div className="profile">
       <h1>Welcome {username}</h1>
-      
       <h3>Your Entries</h3>
       <EntryList entries={entries}/>
     </div>

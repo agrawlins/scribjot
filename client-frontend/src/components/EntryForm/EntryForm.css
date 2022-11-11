@@ -3,7 +3,7 @@
 }
 
 .newEntry > div {
-    height: 90vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     margin: 2%;
@@ -14,7 +14,11 @@
 }
 
 .newEntry > div > h1  {
-    margin: 3%;
+    margin: 10px 0;
+}
+
+.newEntry > div > h2  {
+    height: 15px;
 }
   
 
@@ -25,7 +29,7 @@
 }
 
 .newEntry > div > form {
-    height: 90vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     margin: 0 1%;
@@ -34,7 +38,7 @@
 }
 
 .newEntry > div > form > textarea {
-    height: 60vh;
+    height: 45vh;
     resize: none;
     margin: 1% 0;
     padding: 8px;

@@ -48,16 +48,15 @@ const EntryForm = (props) => {
   const { text } = inputs
   return (
     <div>
-   
       { !togglePrompts ?
         <>
           <button onClick={() => setTogglePrompts(!togglePrompts)}>Need Inspiration?</button>
         </>
         :
         <>
+          <button onClick={() => setTogglePrompts(!togglePrompts)}>Feeling Inspired?</button>
           <h1>Thoughts for Today's Entry:</h1> 
           <h2> <PromptList prompts={prompts}/></h2>
-          <button onClick={() => setTogglePrompts(!togglePrompts)}>Feeling Inspired?</button>
         </>
       }
       {/* <button onClick={() => selectRandomPrompt}>Get New Prompt</button> */}
