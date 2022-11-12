@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../../context/UserProvider.js'
+import { useNavigate } from 'react-router-dom'
 import './Navbar.css'
 
 const Navbar = (props) => {
@@ -13,6 +14,7 @@ const Navbar = (props) => {
 
   const [toggle, setToggle] = useState(false)
 
+  const navigate = useNavigate()
 
   return (
     <div className="navbar">
@@ -20,21 +22,24 @@ const Navbar = (props) => {
         <div className='hamburger'/>
         <div className='hamburger'/>
         <div className='hamburger'/>
-      </button>
-      { !toggle ?
+        { !toggle ?
         <>
-          SCRIBJOT
         </>
         :
-        <>
-          <Link to="/profile">Profile</Link>
-          SCRIBJOT
-          <Link to="/newentry">New Entry</Link>
-        </>
+        <ul className='dropdown'>
+          <button onClick={() => navigate('../profile')}>
+            Profile
+          </button>
+          <button onClick={() => navigate('../newentry')}>
+            New Entry
+          </button>
+        </ul>
       }
+      </button>
+      SCRIBJOT
       <div>
         Logged in as: <br/>{username[0].toUpperCase() + username.slice(1).toLowerCase()}
-        <button onClick={logout}>Logout</button>
+        <button className='logout' onClick={logout}>Logout</button>
       </div>
     </div>
   )

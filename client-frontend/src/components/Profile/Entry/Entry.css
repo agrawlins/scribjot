@@ -1,9 +1,18 @@
 .entry {
     display: flex;
     flex-direction: column;
+    height: 60%;
+    width: 50%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
     background-color: grey;
     box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.9);
     border-radius: 15px;
     padding: 10px;
-    margin: 15px;
+    margin: 15px 25%;
+    opacity: 85%;
+}
+
+.entry > h2 {
+    text-decoration: underline;
 }

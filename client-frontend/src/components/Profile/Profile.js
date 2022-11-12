@@ -1,5 +1,6 @@
-import React, {useContext, useEffect} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import EntryList from './EntryList/EntryList.js'
+import Entry from './Entry/Entry.js'
 import { UserContext } from '../../context/UserProvider.js'
 import "./Profile.css"
 
@@ -11,6 +12,13 @@ const Profile = () => {
     getUserEntries, 
     entries
   } = useContext(UserContext)
+
+  // const plus = () => {
+  //   setCount(prevCount => prevCount + 1)
+  // }
+  // const minus = () => {
+  //   setCount(prevCount => prevCount - 1)
+  // }
 
   useEffect(() => {
     getUserEntries()

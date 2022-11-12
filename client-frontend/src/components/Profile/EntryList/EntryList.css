@@ -1,8 +1,14 @@
 .entry-list {
+    height: 70vh;
     display: flex;
     flex-direction: column;
     margin-left: 8%;
     align-content: center;
+    overflow: auto;
+}
+
+.entry-list::-webkit-scrollbar {
+    display: none;
 }
 
 .entry-list > div {
