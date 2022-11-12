@@ -7,7 +7,5 @@
 
 .entry-list > div {
     display: flex;
-    margin-left: 1%;
-    width: 50%;
     justify-content: space-between;
 }

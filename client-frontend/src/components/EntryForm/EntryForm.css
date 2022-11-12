@@ -40,7 +40,7 @@
 .newEntry > div > form > textarea {
     height: 45vh;
     resize: none;
-    margin: 1% 0;
+    margin: 4% 0 1% 0;
     padding: 8px;
     border-radius: 10px;
 }

@@ -51,6 +51,8 @@ const EntryForm = (props) => {
       { !togglePrompts ?
         <>
           <button onClick={() => setTogglePrompts(!togglePrompts)}>Need Inspiration?</button>
+          <h1> </h1>
+          <h2> </h2> 
         </>
         :
         <>
