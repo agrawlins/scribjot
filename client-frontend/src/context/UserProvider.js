@@ -109,10 +109,6 @@ const UserProvider = (props) => {
         .catch(err => console.log(err.response.data.errMsg))
       }
 
-    const selectRandomPrompt = () => {
-
-    }
-
     return (
         <UserContext.Provider
             value={{
@@ -123,7 +119,6 @@ const UserProvider = (props) => {
                 addEntry,
                 getUserEntries,
                 getPrompts,
-                selectRandomPrompt,
                 resetAuthErr  
             }}>
             {props.children}

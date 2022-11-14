@@ -17,6 +17,8 @@ const Profile = () => {
     getUserEntries()
   }, [])
 
+  
+
   return (
     <div className="profile">
       <h1>Welcome {username}</h1>

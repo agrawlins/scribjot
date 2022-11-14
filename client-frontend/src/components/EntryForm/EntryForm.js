@@ -12,13 +12,13 @@ const initInputs = {
 const EntryForm = (props) => {
   const [inputs, setInputs] = useState(initInputs)
   const [togglePrompts, setTogglePrompts] = useState(false)
+  const [selectedPrompt, setSelectedPrompt] = useState("")
   const {addEntry, errMsg} = props
   const {
     user: {
       username
     }, 
     getPrompts,
-    selectRandomPrompt,
     prompts,
     prompt
   } = useContext(UserContext)
@@ -27,8 +27,13 @@ const EntryForm = (props) => {
 
   useEffect(() => {
     getPrompts()
-    // selectRandomPrompt()
   }, [])
+
+  const selectRandomPrompt = () => {
+    let picked = prompts[Math.floor(Math.random() * prompts.length)]
+    setSelectedPrompt(picked.text)
+    setTogglePrompts(!togglePrompts)
+  }
 
   const handleChange = (e) => {
     const {name, value} = e.target
@@ -48,20 +53,20 @@ const EntryForm = (props) => {
   const { text } = inputs
   return (
     <div>
-      { !togglePrompts ?
+      {/* { !togglePrompts ?
         <>
-          <button onClick={() => setTogglePrompts(!togglePrompts)}>Need Inspiration?</button>
-          <h1> </h1>
-          <h2> </h2> 
+          <button onClick={() => selectRandomPrompt()}>Need Inspiration?</button>
         </>
         :
         <>
           <button onClick={() => setTogglePrompts(!togglePrompts)}>Feeling Inspired?</button>
-          <h1>Thoughts for Today's Entry:</h1> 
-          <h2> <PromptList prompts={prompts}/></h2>
+          <h1>Thought for Today's Entry:</h1> 
+          <h2>{selectedPrompt}</h2>
         </>
-      }
-      {/* <button onClick={() => selectRandomPrompt}>Get New Prompt</button> */}
+      } */}
+      <h1>Thought for Today's Entry:</h1> 
+      <button onClick={() => selectRandomPrompt()}>Get New Prompt</button>
+        <h2>{selectedPrompt}</h2>
       <form onSubmit={handleSubmit}>
         <textarea 
           type="textarea" 
