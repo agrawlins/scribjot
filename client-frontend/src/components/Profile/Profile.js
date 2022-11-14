@@ -13,13 +13,6 @@ const Profile = () => {
     entries
   } = useContext(UserContext)
 
-  // const plus = () => {
-  //   setCount(prevCount => prevCount + 1)
-  // }
-  // const minus = () => {
-  //   setCount(prevCount => prevCount - 1)
-  // }
-
   useEffect(() => {
     getUserEntries()
   }, [])

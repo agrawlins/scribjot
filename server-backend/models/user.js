@@ -17,6 +17,10 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  timeZone: {
+    type: Number,
+    enum: []
+  },
   isAdmin: {
     type: Boolean,
     default: false
