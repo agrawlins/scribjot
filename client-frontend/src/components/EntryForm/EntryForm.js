@@ -64,9 +64,9 @@ const EntryForm = (props) => {
           <h2>{selectedPrompt}</h2>
         </>
       } */}
-      <h1>Thought for Today's Entry:</h1> 
       <button onClick={() => selectRandomPrompt()}>Get New Prompt</button>
-        <h2>{selectedPrompt}</h2>
+      <h1>Thought for Today's Entry:</h1> 
+      <h2>{selectedPrompt}</h2>
       <form onSubmit={handleSubmit}>
         <textarea 
           type="textarea" 
