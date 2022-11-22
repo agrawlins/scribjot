@@ -1,7 +1,6 @@
 .entry {
     display: flex;
     flex-direction: column;
-    height: 60%;
     width: 50%;
     white-space: pre-wrap;
     word-wrap: break-word;

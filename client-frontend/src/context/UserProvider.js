@@ -83,6 +83,7 @@ const UserProvider = (props) => {
                     ...prevState,
                     entries: res.data
                 }))
+                localStorage.setItem("entries", JSON.stringify(res.data))
             })
             .catch(err => console.log(err.response.data.errMsg))
     }
