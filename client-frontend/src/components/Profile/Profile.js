@@ -19,11 +19,57 @@ const Profile = () => {
   const [nextDisabled, setNextDisabled] = useState(false)
   const [prevDisabled, setPrevDisabled] = useState(false)
 
+  const creationYear = entries[selectedEntry]?.creationDate.slice(0, 4)
+  const creationMonth = entries[selectedEntry]?.creationDate.slice(5, 7)
+  const creationDay = entries[selectedEntry]?.creationDate.slice(8, 10)
+  const creationHour = entries[selectedEntry]?.creationDate.slice(11, 13)
+  const creationMinute = entries[selectedEntry]?.creationDate.slice(14, 16)
+
+  let month
+  switch (creationMonth) {
+    case "01":
+      month = "January"
+      break;
+    case "02":
+      month = "February"
+      break;
+    case "03":
+      month = "March"
+      break;
+    case "04":
+      month = "April"
+      break;
+    case "05":
+      month = "May"
+      break;
+    case "06":
+      month = "June"
+      break;
+    case "07":
+      month = "July"
+      break;
+    case "08":
+      month = "August"
+      break;
+    case "09":
+      month = "September"
+      break;
+    case "10":
+      month = "October"
+      break;
+    case "11":
+      month = "November"
+      break;
+    case "12":
+      month = "December"
+      break;
+    default:
+      break;
+  }
+
 
   useEffect(() => {
     getUserEntries()
-    console.log(entries)
-    console.log(entries[selectedEntry]?.text)
   }, [])
 
 
@@ -33,17 +79,6 @@ const Profile = () => {
 
 
   //Used to Navigate on Page View
-
-  const handleChange = () => {
-    if(selectedEntry === (entries[selectedEntry].length - 1)){
-      setNextDisabled(true)
-    } else if(selectedEntry === 0){
-      setPrevDisabled(true)
-    } else {
-      setNextDisabled(false)
-      setPrevDisabled(false)
-    }
-  }
 
   const goToNextEntry = () => {
     if(selectedEntry === (entries?.length - 1)){
@@ -86,6 +121,7 @@ const Profile = () => {
       {viewToggle?
       <div>
         <button onClick={() => setViewToggle(!viewToggle)}>Switch to List View</button>
+        <h2>{month} {creationDay}, {creationYear}, at {creationHour}:{creationMinute}</h2> <br/>
         <h1>{entries[selectedEntry]?.text}</h1>
         <h1>Page {selectedEntry + 1}</h1>
         <div>
