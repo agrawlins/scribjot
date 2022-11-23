@@ -1,0 +1,59 @@
+@media only screen and (min-width: 768px){
+    .newEntry {
+        height: 100vh;
+        padding: 10%;
+    }
+    
+    .newEntry > div {
+        height: 65vh;
+        display: flex;
+        flex-direction: column;
+        margin: 2%;
+        border: 1px solid #3339;
+        background-color: #aaa9;
+        padding: 2%;
+        border-radius: 15px;
+    }
+    
+    .newEntry > h1  {
+        margin: 10px 0;
+        font-size: 30px;
+    }
+      
+    
+    .newEntry > button  {
+        margin: 1% 3%;
+        padding: 8px;
+        border-radius: 5px;
+    }
+}
+
+@media only screen and (max-width: 360px){
+    .newEntry {
+        height: 100vh;
+        padding: 25% 0;
+    }
+    
+    .newEntry > div {
+        height: 65vh;
+        margin: 5%;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #3339;
+        background-color: #aaa9;
+        padding: 2%;
+        border-radius: 15px;
+    }
+    
+    .newEntry > h1  {
+        margin: 10px 0;
+        font-size: 30px;
+    }
+      
+    
+    .newEntry > button  {
+        margin: 1% 3%;
+        padding: 8px;
+        border-radius: 5px;
+    }
+}

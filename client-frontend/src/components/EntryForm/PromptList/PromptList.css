@@ -1,8 +1,0 @@
-.prompt-list  {
-    margin: 0 3%;
-    overflow: auto;
-}
-
-.prompt-list::-webkit-scrollbar {
-    display: none;
-}

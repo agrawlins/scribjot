@@ -1,6 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react'
 import { UserContext } from '../../context/UserProvider'
-import PromptList from './PromptList/PromptList'
 import "./EntryForm.css"
 import { useNavigate } from 'react-router-dom'
 
@@ -52,7 +51,7 @@ const EntryForm = (props) => {
 
   const { text } = inputs
   return (
-    <div>
+    <div className='entryForm'>
       {/* { !togglePrompts ?
         <>
           <button onClick={() => selectRandomPrompt()}>Need Inspiration?</button>

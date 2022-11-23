@@ -1,34 +1,23 @@
-.newEntry {
+.entryForm {
     height: 100vh;
 }
 
-.newEntry > div {
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    margin: 2%;
-    border: 1px solid #3339;
-    background-color: #aaa9;
-    padding: 2%;
-    border-radius: 15px;
-}
-
-.newEntry > div > h1  {
+.entryForm > h1  {
     margin: 10px 0;
 }
 
-.newEntry > div > h2  {
+.entryForm > h2  {
     height: 15px;
 }
   
 
-.newEntry > div > button  {
+.entryForm > button  {
     margin: 1% 3%;
     padding: 8px;
     border-radius: 5px;
 }
 
-.newEntry > div > form {
+.entryForm > form {
     height: 80vh;
     display: flex;
     flex-direction: column;
@@ -37,15 +26,15 @@
     border-radius: 15px;
 }
 
-.newEntry > div > form > textarea {
-    height: 45vh;
+.entryForm > form > textarea {
+    height: 35vh;
     resize: none;
     margin: 4% 0 1% 0;
     padding: 8px;
     border-radius: 10px;
 }
 
-.newEntry > div > form > button  {
+.entryForm > form > button  {
     margin: 1% 0;
     padding: 8px;
     border-radius: 5px;

@@ -18,28 +18,29 @@ const Navbar = (props) => {
 
   return (
     <div className="navbar">
-      <button onClick={() => setToggle(!toggle)}>
-        <div className='hamburger'/>
-        <div className='hamburger'/>
-        <div className='hamburger'/>
         { !toggle ?
         <>
+          <button onClick={() => setToggle(!toggle)}>
+            <div className='hamburger'/>
+            <div className='hamburger'/>
+            <div className='hamburger'/>
+          </button>
         </>
         :
         <ul className='dropdown'>
+          <button onClick={() => setToggle(!toggle)}>Back</button>
           <button onClick={() => navigate('../profile')}>
             Profile
           </button>
           <button onClick={() => navigate('../newentry')}>
             New Entry
           </button>
+          <button className='logout' onClick={logout}>Logout</button>
         </ul>
       }
-      </button>
-      SCRIBJOT
+        SCRIBJOT
       <div>
         Logged in as: <br/>{username[0].toUpperCase() + username.slice(1).toLowerCase()}
-        <button className='logout' onClick={logout}>Logout</button>
       </div>
     </div>
   )

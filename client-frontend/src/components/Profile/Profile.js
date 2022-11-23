@@ -120,13 +120,13 @@ const Profile = () => {
       <h1>Welcome, {username[0].toUpperCase() + username.slice(1).toLowerCase()}!</h1>
       {viewToggle?
       <div>
-        <button onClick={() => setViewToggle(!viewToggle)}>Switch to List View</button>
-        <h2>{month} {creationDay}, {creationYear}, at {creationHour}:{creationMinute}</h2> <br/>
+        <button onClick={() => setViewToggle(!viewToggle)}>Switch to List View</button> <br/>
+        <h2>{month} {creationDay}, {creationYear}, at {creationHour}:{creationMinute}</h2>
         <h1>{entries[selectedEntry]?.text}</h1>
-        <h1>Page {selectedEntry + 1}</h1>
-        <div>
-          <button onClick={() => goToPreviousEntry()} disabled={prevDisabled}>PREV</button>
-          <button onClick={() => goToNextEntry()} disabled={nextDisabled}>NEXT</button>
+        <div className='navButtons'>
+          <button className='prevButton' onClick={() => goToPreviousEntry()} disabled={prevDisabled}>PREV</button>
+          <h1>Page {selectedEntry + 1}</h1>
+          <button className='nextButton' onClick={() => goToNextEntry()} disabled={nextDisabled}>NEXT</button>
         </div>
       </div>
       :
