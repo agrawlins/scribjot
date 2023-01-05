@@ -1,61 +1,94 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
+import { UserContext } from '../../../context/UserProvider'
+import EntryForm from '../../EntryForm/EntryForm.js'
 import "./Entry.css"
 
 const Entry = (props) => {
-  // const { text, description, _id} = props
-  const { text, creationDate } = props
+  const {editEntry, deleteEntry} = useContext(UserContext)
+  const {text, creationDate, _id} = props
   const creationYear = creationDate.slice(0, 4)
-  const creationMonth = creationDate.slice(5, 7)
+  const month = creationDate.slice(5, 7)
   const creationDay = creationDate.slice(8, 10)
   const creationHour = creationDate.slice(11, 13)
   const creationMinute = creationDate.slice(14, 16)
+  const [toggleEdit, setToggleEdit] = useState(false)
+  const [toggleDelete, setToggleDelete] = useState(false)
 
-  let month
-  switch (creationMonth) {
+  let creationMonth
+  switch (month) {
     case "01":
-      month = "January"
+      creationMonth = "January"
       break;
     case "02":
-      month = "February"
+      creationMonth = "February"
       break;
     case "03":
-      month = "March"
+      creationMonth = "March"
       break;
     case "04":
-      month = "April"
+      creationMonth = "April"
       break;
     case "05":
-      month = "May"
+      creationMonth = "May"
       break;
     case "06":
-      month = "June"
+      creationMonth = "June"
       break;
     case "07":
-      month = "July"
+      creationMonth = "July"
       break;
     case "08":
-      month = "August"
+      creationMonth = "August"
       break;
     case "09":
-      month = "September"
+      creationMonth = "September"
       break;
     case "10":
-      month = "October"
+      creationMonth = "October"
       break;
     case "11":
-      month = "November"
+      creationMonth = "November"
       break;
     case "12":
-      month = "December"
+      creationMonth = "December"
       break;
     default:
       break;
   }
 
   return (
-    <div className="entry">
-      <h2>{month} {creationDay}, {creationYear}, at {creationHour}:{creationMinute}</h2> <br/>
-      <h1>{text}</h1>
+    <div className='entry'>
+      {toggleEdit ?
+      <>
+        <EntryForm
+          text={text}
+          btnText={"Save"}
+          toggleEdit = {toggleEdit}
+          setToggleEdit = {setToggleEdit}
+          submit = {editEntry}
+          _id = {_id}
+        />
+        <button onClick={() => {setToggleEdit(!toggleEdit)}}>Cancel</button>
+      </>
+      :
+      <div className="entry-delete">
+        <h2>{creationMonth} {creationDay}, {creationYear}, at {creationHour}:{creationMinute}</h2> <br/>
+        <h1>{text}</h1>
+        <div>
+          {toggleDelete ?
+            <>
+              <button className='delete-btn' onClick={() => {deleteEntry(props._id)}}>Delete</button>
+              <button onClick={() => {setToggleDelete(!toggleDelete)}}>Cancel</button>
+            </>
+            :
+            <>
+              <button onClick={() => {setToggleEdit(!toggleEdit)}}>Edit</button>
+              <button className='delete-btn' onClick={() => {setToggleDelete(!toggleDelete)}}>Delete</button>
+            </>
+          }
+        </div>
+      </div>
+      }
     </div>
   )
 }

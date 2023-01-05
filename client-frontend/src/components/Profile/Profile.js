@@ -1,8 +1,8 @@
 import React, {useState, useContext, useEffect} from 'react'
+import Entry from './Entry/Entry.js'
 import EntryList from './EntryList/EntryList.js'
 import { UserContext } from '../../context/UserProvider.js'
 import "./Profile.css"
-// import axios from 'axios'
 // import searchIcon from '../../images/search-icon.jpg'
 
 const Profile = () => {
@@ -19,69 +19,17 @@ const Profile = () => {
   const [nextDisabled, setNextDisabled] = useState(false)
   const [prevDisabled, setPrevDisabled] = useState(false)
 
-  const creationYear = entries[selectedEntry]?.creationDate.slice(0, 4)
-  const creationMonth = entries[selectedEntry]?.creationDate.slice(5, 7)
-  const creationDay = entries[selectedEntry]?.creationDate.slice(8, 10)
-  const creationHour = entries[selectedEntry]?.creationDate.slice(11, 13)
-  const creationMinute = entries[selectedEntry]?.creationDate.slice(14, 16)
-
-  let month
-  switch (creationMonth) {
-    case "01":
-      month = "January"
-      break;
-    case "02":
-      month = "February"
-      break;
-    case "03":
-      month = "March"
-      break;
-    case "04":
-      month = "April"
-      break;
-    case "05":
-      month = "May"
-      break;
-    case "06":
-      month = "June"
-      break;
-    case "07":
-      month = "July"
-      break;
-    case "08":
-      month = "August"
-      break;
-    case "09":
-      month = "September"
-      break;
-    case "10":
-      month = "October"
-      break;
-    case "11":
-      month = "November"
-      break;
-    case "12":
-      month = "December"
-      break;
-    default:
-      break;
-  }
-
+  const text = entries[selectedEntry]?.text
+  const creationDate = entries[selectedEntry]?.creationDate
 
   useEffect(() => {
     getUserEntries()
   }, [])
 
-
-  const getCurrentTime = () => {
-    
-  }
-
-
   //Used to Navigate on Page View
 
   const goToNextEntry = () => {
-    if(selectedEntry === (entries?.length - 1)){
+    if(selectedEntry >= (entries?.length - 1)){
       setNextDisabled(true)
     } else {
       setSelectedEntry(nextEntry => nextEntry + 1)
@@ -121,8 +69,11 @@ const Profile = () => {
       {viewToggle?
       <div>
         <button onClick={() => setViewToggle(!viewToggle)}>Switch to List View</button> <br/>
-        <h2>{month} {creationDay}, {creationYear}, at {creationHour}:{creationMinute}</h2>
-        <h1>{entries[selectedEntry]?.text}</h1>
+        <Entry
+          _id = {entries[selectedEntry]?._id}
+          text = {text || "Loading..."}
+          creationDate = {creationDate || "Loading..."}
+        />
         <div className='navButtons'>
           <button className='prevButton' onClick={() => goToPreviousEntry()} disabled={prevDisabled}>PREV</button>
           <h1>Page {selectedEntry + 1}</h1>
@@ -130,27 +81,10 @@ const Profile = () => {
         </div>
       </div>
       :
-      <>
+      <div>
         <button onClick={() => setViewToggle(!viewToggle)}>Switch to Page View</button>
-        {/* <form onSubmit={handleFilter}>
-          <h4>Filter by Date</h4>
-          <select className="filter-form">
-            <option value="reset">Select Date Range</option>
-            <option value="day">Today</option>
-            <option value="week">This Week</option>
-            <option value="month">This Month</option>
-            <option value="year">This Year</option>
-          </select>
-          <input          
-            type="text"
-          >
-          </input>
-          <button>
-            <img src={searchIcon}/>
-          </button>
-        </form> */}
         <EntryList entries={entries}/>
-      </>
+      </div>
       }
     </div>
   )

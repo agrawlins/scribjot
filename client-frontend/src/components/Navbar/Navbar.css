@@ -14,6 +14,14 @@
 
   .navbar > p {
     display: flex;
+    position: fixed;
+    right: 10px;
+  }
+
+  .navbar > h1 {
+    display: flex;
+    position: fixed;
+    margin-left: 46%;
   }
 
   .navbar > button {
@@ -38,8 +46,13 @@
   }
 
   .dropdown {
-    height: 150px;
+    height: 250px;
+
     display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
     flex-direction: column;
     justify-content: space-evenly;
     background: #464646;

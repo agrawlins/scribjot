@@ -1,33 +1,22 @@
-.entryForm {
-    height: 100vh;
-}
-
-.entryForm > h1  {
-    margin: 10px 0;
-}
-
 .entryForm > h2  {
     height: 15px;
 }
   
 
 .entryForm > button  {
-    margin: 1% 3%;
     padding: 8px;
     border-radius: 5px;
 }
 
 .entryForm > form {
-    height: 80vh;
     display: flex;
     flex-direction: column;
-    margin: 0 1%;
     padding: 2%;
     border-radius: 15px;
 }
 
 .entryForm > form > textarea {
-    height: 35vh;
+    height: 250px;
     resize: none;
     margin: 4% 0 1% 0;
     padding: 8px;

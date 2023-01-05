@@ -37,20 +37,6 @@ entryRouter.post("/", (req, res, next) => {
   })
 })
 
-// Delete Entry
-entryRouter.delete("/:entryId", (req, res, next) => {
-  Entry.findOneAndDelete(
-    { _id: req.params.entryId, user: req.auth._id },
-    (err, deletedEntry) => {
-      if(err){
-        res.status(500)
-        return next(err)
-      }
-      return res.status(200).send(`Successfully delete entry: ${deletedEntry.text}`)
-    }
-  )
-})
-
 // Update Entry
 entryRouter.put("/:entryId", (req, res, next) => {
   Entry.findOneAndUpdate(
@@ -63,6 +49,20 @@ entryRouter.put("/:entryId", (req, res, next) => {
         return next(err)
       }
       return res.status(201).send(updatedEntry)
+    }
+  )
+})
+
+// Delete Entry
+entryRouter.delete("/:entryId", (req, res, next) => {
+  Entry.findOneAndDelete(
+    { _id: req.params.entryId, user: req.auth._id },
+    (err, deletedEntry) => {
+      if(err){
+        res.status(500)
+        return next(err)
+      }
+      return res.status(200).send(`Successfully delete entry: ${deletedEntry.text}`)
     }
   )
 })

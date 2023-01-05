@@ -18,6 +18,8 @@ const UserProvider = (props) => {
         prompts: [],
         errMsg: ""
     }
+
+    const {toggleEdit, setToggleEdit} = props
     const [userState, setUserState] = useState(initState)
     const [prompt, setPrompt] = useState(initState)
 
@@ -110,6 +112,40 @@ const UserProvider = (props) => {
         .catch(err => console.log(err.response.data.errMsg))
       }
 
+    const editEntry = (updates, entryId) => {
+    userAxios.put(`/api/entries/${entryId}`, updates,
+        {
+            headers: {
+                'Authorization': `Bearer ${initState.token}`
+            }
+        }
+    )
+        .then(res => {
+            getUserEntries()
+            setUserState(entry => entry._id !== entryId ? entry : res.data)
+        })
+        .catch(err => console.log(err))
+    }
+
+    const deleteEntry = (entryId) => {
+    userAxios.delete(`/api/entries/${entryId}`, 
+        {
+            headers: {
+                'Authorization': `Bearer ${initState.token}`
+            }
+        }
+    )
+        .then(res => {
+        const updatedEntries = userState.entries.filter(entry => entry._id !== entryId);
+        setUserState(prevState => ({
+            ...prevState,
+            entries: updatedEntries
+        }))
+        localStorage.setItem("entries", JSON.stringify(updatedEntries))
+        })
+        .catch(err => console.log(err))
+    }
+
     return (
         <UserContext.Provider
             value={{
@@ -120,6 +156,8 @@ const UserProvider = (props) => {
                 addEntry,
                 getUserEntries,
                 getPrompts,
+                editEntry,
+                deleteEntry,
                 resetAuthErr  
             }}>
             {props.children}

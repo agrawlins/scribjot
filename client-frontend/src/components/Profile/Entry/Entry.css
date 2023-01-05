@@ -10,8 +10,36 @@
     padding: 10px;
     margin: 15px;
     opacity: 85%;
+    
 }
 
-.entry > h2 {
+.entry-delete > h1 {
+    height: 250px;
+    overflow: auto;
+}
+
+.entry-delete > h1::-webkit-scrollbar {
+    display: none;
+}
+
+.entry-delete > h2 {
     text-decoration: underline;
+}
+
+.entry-delete > div {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.entry-delete > div > button {
+    height: 25px;
+    margin: 5px;
+    border: 0 solid;
+    border-radius: 15px;
+}
+
+.delete-btn {
+    color: white;
+    background-color: red;
 }

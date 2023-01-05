@@ -3,36 +3,25 @@ import { UserContext } from '../../context/UserProvider'
 import "./EntryForm.css"
 import { useNavigate } from 'react-router-dom'
 
-const initInputs = {
-  text: []
-}
 
 
 const EntryForm = (props) => {
+  const initInputs = {
+    text: [props.text] || ""
+  }
   const [inputs, setInputs] = useState(initInputs)
-  const [togglePrompts, setTogglePrompts] = useState(false)
-  const [selectedPrompt, setSelectedPrompt] = useState("")
-  const {addEntry, errMsg} = props
+  const { toggleEdit, setToggleEdit, btnText, submit, _id, errMsg} = props
   const {
     user: {
       username
     }, 
+    getUserEntries,
     getPrompts,
     prompts,
     prompt
   } = useContext(UserContext)
 
   const navigate = useNavigate()
-
-  useEffect(() => {
-    getPrompts()
-  }, [])
-
-  const selectRandomPrompt = () => {
-    let picked = prompts[Math.floor(Math.random() * prompts.length)]
-    setSelectedPrompt(picked.text)
-    setTogglePrompts(!togglePrompts)
-  }
 
   const handleChange = (e) => {
     const {name, value} = e.target
@@ -44,28 +33,15 @@ const EntryForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addEntry(inputs)
+    submit(inputs, _id)
     setInputs(initInputs)
     navigate('../profile')
+    setToggleEdit(!toggleEdit)
   }
 
   const { text } = inputs
   return (
     <div className='entryForm'>
-      {/* { !togglePrompts ?
-        <>
-          <button onClick={() => selectRandomPrompt()}>Need Inspiration?</button>
-        </>
-        :
-        <>
-          <button onClick={() => setTogglePrompts(!togglePrompts)}>Feeling Inspired?</button>
-          <h1>Thought for Today's Entry:</h1> 
-          <h2>{selectedPrompt}</h2>
-        </>
-      } */}
-      <button onClick={() => selectRandomPrompt()}>Get New Prompt</button>
-      <h1>Thought for Today's Entry:</h1> 
-      <h2>{selectedPrompt}</h2>
       <form onSubmit={handleSubmit}>
         <textarea 
           type="textarea" 
@@ -76,7 +52,7 @@ const EntryForm = (props) => {
           required
         />
         <p style={{color: "red"}}>{errMsg}</p>
-        <button>New Entry</button>
+        <button>{btnText}</button>
       </form>
     </div>
   )

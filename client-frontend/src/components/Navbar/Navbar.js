@@ -1,5 +1,4 @@
 import React, {useState, useContext} from 'react'
-import { Link } from 'react-router-dom'
 import { UserContext } from '../../context/UserProvider.js'
 import { useNavigate } from 'react-router-dom'
 import './Navbar.css'
@@ -28,7 +27,7 @@ const Navbar = (props) => {
         </>
         :
         <ul className='dropdown'>
-          <button onClick={() => setToggle(!toggle)}>Back</button>
+          <button onClick={() => setToggle(!toggle)}>Collapse</button>
           <button onClick={() => navigate('../profile')}>
             Profile
           </button>
@@ -38,10 +37,8 @@ const Navbar = (props) => {
           <button className='logout' onClick={logout}>Logout</button>
         </ul>
       }
-        SCRIBJOT
-      <div>
-        Logged in as: <br/>{username[0].toUpperCase() + username.slice(1).toLowerCase()}
-      </div>
+      <h1>SCRIBJOT</h1>
+      <p>Logged in as: <br/>{username[0].toUpperCase() + username.slice(1).toLowerCase()}</p>
     </div>
   )
 }

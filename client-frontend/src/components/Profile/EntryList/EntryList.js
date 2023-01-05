@@ -7,7 +7,11 @@ const EntryList = (props) => {
 
   return (
     <div className="entry-list">
-      {entries.map(entry => <Entry {...entry} key={entry._id}/>).reverse()}
+      {entries.map(entry => 
+        <Entry {...entry} 
+          key={entry._id}
+          // data = {entries}
+        />).reverse()}
     </div>
   )
 }
