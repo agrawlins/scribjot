@@ -42,22 +42,24 @@ const Auth = () => {
           <AuthForm 
             handleChange={handleChange}
             handleSubmit={handleLogin}
+            toggle={toggle}
             inputs={inputs}
             btnText="Login"
             errMsg={errMsg}
           />
-          <button onClick={toggleForm}>Not a member?</button>
+          <button className='toggleButton' onClick={toggleForm}>Not a member?<br/>Click Here to Signup</button>
         </>
         :
         <>
           <AuthForm 
             handleChange={handleChange}
             handleSubmit={handleSignup}
+            toggle={toggle}
             inputs={inputs}
             btnText="Sign up"
             errMsg={errMsg}
           />
-          <button onClick={toggleForm}>Already a member?</button>
+          <button className='toggleButton' onClick={toggleForm}>Already a member? <br/>Click Here to Login</button>
         </>
       }
     </div>

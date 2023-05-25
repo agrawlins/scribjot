@@ -10,7 +10,7 @@ const EntryForm = (props) => {
     text: [props.text] || ""
   }
   const [inputs, setInputs] = useState(initInputs)
-  const { toggleEdit, setToggleEdit, btnText, submit, _id, errMsg} = props
+  const {toggleEdit, setToggleEdit, btnText, submit, _id, errMsg} = props
   const {
     user: {
       username

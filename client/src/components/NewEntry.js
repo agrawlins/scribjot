@@ -19,8 +19,6 @@ const NewEntry = () => {
   const [togglePrompts, setTogglePrompts] = useState(false)
   const [selectedPrompt, setSelectedPrompt] = useState("")
 
-  
-  
   useEffect(() => {
     getPrompts()
   }, [])
